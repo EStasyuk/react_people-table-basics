@@ -2,12 +2,11 @@ import { Loader } from './components/Loader';
 
 import './App.scss';
 
-import { Routes, Route, Navigate, NavLink } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { HomePage } from './components/Loader/HomePage';
 import { PeoplePage } from './components/Loader/PeoplePage';
 import { NotFoundPage } from './components/Loader/NotFoundPage';
 import { Navbar } from './components/Loader/Navbar';
-import { PersonDetailsPage } from './components/PersonDetailsPage';
 
 export const App = () => (
   <div data-cy="app">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { PersonLink } from './PersonLink';
 
@@ -17,6 +17,11 @@ interface Props {
 
 export const PeopleTable: React.FC<Props> = ({ people }) => {
   const { personSlug } = useParams();
+
+  const peopleByName = React.useMemo(
+    () => new Map(people.map(p => [p.name, p])),
+    [people],
+  );
 
   return (
     <table
@@ -47,13 +52,13 @@ export const PeopleTable: React.FC<Props> = ({ people }) => {
             <td>{person.born}</td>
             <td>
               <PersonLink
-                person={people.find(p => p.name === person.motherName) || null}
+                person={peopleByName.get(person.motherName || '') || null}
                 nameToDisplay={person.motherName || ''}
               />
             </td>
             <td>
               <PersonLink
-                person={people.find(p => p.name === person.fatherName) || null}
+                person={peopleByName.get(person.fatherName || '') || null}
                 nameToDisplay={person.fatherName || ''}
               />
             </td>

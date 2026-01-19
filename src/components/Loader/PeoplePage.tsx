@@ -18,9 +18,7 @@ export const PeoplePage: React.FC = () => {
     setIsLoading(true);
     setIsError(false);
 
-    fetch(
-'https://mate-academy.github.io/react_people-table-basics/api/people.json',
-    )
+    fetch('https://mate-academy.github.io/react_people-table/api/people.json')
       .then(response => {
         if (!response.ok) {
           throw new Error('Помилка сервера');
